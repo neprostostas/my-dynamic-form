@@ -16,7 +16,7 @@
 <ol>
     <li>
         <strong>Clone the repository:</strong>
-        <pre><code>git clone https://github.com/neprostostas/my-dynamic-form</code></pre>
+        <pre><code>git clone https://github.com/neprostostas/my-dynamic-form.git</code></pre>
     </li>
     <li>
         <strong>Navigate to the project directory:</strong>
