@@ -2,7 +2,6 @@ import { mount } from "@vue/test-utils";
 import DynamicForm from "@/components/DynamicForm.vue"; // adjust the path as needed
 
 describe("DynamicForm", () => {
-
   it("should add a new field", async () => {
     const wrapper = mount(DynamicForm);
     const addButton = wrapper.find(".btn-add");
