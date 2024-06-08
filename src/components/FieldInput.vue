@@ -68,15 +68,4 @@ export default defineComponent({
   margin-bottom: 10px;
   width: 400px;
 }
-.input-field {
-  flex: 1;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  transition: background-color 0.3s ease;
-}
-.highlight {
-  transition: background-color 0.3s ease;
-  background-color: #d4edda;
-}
 </style>

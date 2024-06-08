@@ -54,10 +54,21 @@ const removeField = (index: number) => {
 };
 </script>
 
-<style scoped>
+<style>
 .form-container {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+.input-field {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+.highlight {
+  transition: background-color 0.3s ease;
+  background-color: #d4edda;
 }
 </style>

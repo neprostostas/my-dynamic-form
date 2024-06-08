@@ -45,19 +45,8 @@ export default defineComponent({
 </script>
 
 <style scoped>
-.input-field {
-  flex: 1;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  transition: background-color 0.3s ease;
-}
 .input-field.search {
   width: 380px;
   margin: 20px 0 30px;
-}
-.highlight {
-  transition: background-color 0.3s ease;
-  background-color: #d4edda;
 }
 </style>
