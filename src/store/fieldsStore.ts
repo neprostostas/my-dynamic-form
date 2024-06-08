@@ -1,19 +1,13 @@
 import { defineStore } from "pinia";
 import { ref } from "vue";
-
-interface Field {
-  id: number;
-  value: string;
-  vowelCount: number;
-  highlighted: boolean;
-}
+import { Field } from "@/types";
 
 export const useFieldsStore = defineStore(
   "fieldsStore",
   () => {
     const fields = ref<Field[]>([]);
     const searchQuery = ref<string>("");
-    const searchQueryMatches = ref<string | boolean>(false);
+    const searchQueryMatches = ref<boolean>(false);
 
     const addField = () => {
       if (fields.value.length >= 10) {
@@ -56,7 +50,7 @@ export const useFieldsStore = defineStore(
           field.highlighted = false;
         }
       });
-      searchQueryMatches.value = query && matchFound;
+      searchQueryMatches.value = matchFound;
     };
 
     return {
