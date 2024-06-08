@@ -1,12 +1,6 @@
 import { defineStore } from "pinia";
 import { ref } from "vue";
-
-interface Field {
-  id: number;
-  value: string;
-  vowelCount: number;
-  highlighted: boolean;
-}
+import { Field } from "@/types";
 
 export const useFieldsStore = defineStore(
   "fieldsStore",
