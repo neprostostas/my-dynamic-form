@@ -5,9 +5,29 @@ import { Field } from "@/types";
 export const useFieldsStore = defineStore(
   "fieldsStore",
   () => {
-    const fields = ref<Field[]>([]);
-    const searchQuery = ref<string>("");
-    const searchQueryMatches = ref<string | boolean>(false);
+    const fields = ref<Field[]>([
+      {
+        id: Date.now() + 1,
+        value: "hello 👋",
+        vowelCount: 2,
+        highlighted: true,
+      },
+      {
+        id: Date.now() + 2,
+        value: "how are you? 👀",
+        vowelCount: 5,
+        highlighted: false,
+      },
+      {
+        id: Date.now() + 3,
+        value: "bye hero🦹🏻",
+        vowelCount: 4,
+        highlighted: true,
+      },
+    ]);
+
+    const searchQuery = ref<string>("he");
+    const searchQueryMatches = ref<string | boolean>(true);
 
     const addField = () => {
       if (fields.value.length >= 10) {
