@@ -6,28 +6,32 @@
       @input="onInputChange"
       class="input-field"
     />
-    <button @click="removeField" class="btn btn-remove">Remove</button>
+    <Button @click="removeField" buttonClass="btn-remove">Remove</Button>
     <span>Vowels: {{ field.vowelCount }}</span>
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, watch, PropType } from "vue";
-import { Field } from "@/types";
+import { defineComponent, ref, watch } from "vue";
+import { FieldInputProps } from "@/types";
+import Button from "@/components/Button.vue";
 
 export default defineComponent({
   name: "FieldInput",
   props: {
     field: {
-      type: Object as PropType<Field>,
+      type: Object as () => FieldInputProps["field"],
       required: true,
     },
     index: {
-      type: Number,
+      type: Number as () => FieldInputProps["index"],
       required: true,
     },
   },
   emits: ["updateFieldValue", "removeField"],
+  components: {
+    Button,
+  },
   setup(props, { emit }) {
     const localValue = ref(props.field.value);
 
@@ -74,9 +78,5 @@ export default defineComponent({
 .highlight {
   transition: background-color 0.3s ease;
   background-color: #d4edda;
-}
-.btn-remove {
-  background-color: #dc3545;
-  color: white;
 }
 </style>

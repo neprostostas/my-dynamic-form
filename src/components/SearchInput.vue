@@ -10,16 +10,17 @@
 
 <script lang="ts">
 import { defineComponent, ref, watch } from "vue";
+import { SearchInputProps } from "@/types";
 
 export default defineComponent({
   name: "SearchInput",
   props: {
     searchQuery: {
-      type: String,
+      type: String as () => SearchInputProps["searchQuery"],
       required: true,
     },
     searchQueryMatches: {
-      type: Boolean,
+      type: Boolean as () => SearchInputProps["searchQueryMatches"],
       required: true,
     },
   },

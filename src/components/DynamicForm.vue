@@ -13,13 +13,13 @@
       @removeField="removeField"
     />
 
-    <button
+    <Button
       @click="addField"
-      class="btn btn-add"
+      buttonClass="btn-add"
       :disabled="fields.length >= 10"
     >
       Add Field
-    </button>
+    </Button>
   </div>
 </template>
 
@@ -28,6 +28,7 @@ import { storeToRefs } from "pinia";
 import { useFieldsStore } from "@/store/fieldsStore";
 import FieldInput from "@/components/FieldInput.vue";
 import SearchInput from "@/components/SearchInput.vue";
+import Button from "@/components/Button.vue";
 
 const fieldsStore = useFieldsStore();
 const { fields, searchQuery, searchQueryMatches } = storeToRefs(fieldsStore);
@@ -58,21 +59,5 @@ const removeField = (index: number) => {
   display: flex;
   flex-direction: column;
   align-items: center;
-}
-.btn {
-  padding: 10px 20px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-.btn-add {
-  margin-top: 20px;
-  background-color: #007bff;
-  color: white;
-}
-.btn:disabled {
-  background-color: #ccc;
-  cursor: not-allowed;
 }
 </style>
