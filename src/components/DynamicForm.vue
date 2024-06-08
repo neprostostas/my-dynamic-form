@@ -51,22 +51,24 @@ const searchQuery = ref<string>("");
 const searchQueryMatches = ref<string | boolean>(false);
 
 const addField = () => {
-  if (fields.length < 10) {
-    fields.push({
-      id: Date.now(),
-      value: "",
-      vowelCount: 0,
-      highlighted: false,
-    });
-    saveFieldsToLocalStorage();
+  if (fields.length >= 10) {
+    return;
   }
+  fields.push({
+    id: Date.now(),
+    value: "",
+    vowelCount: 0,
+    highlighted: false,
+  });
+  saveFieldsToLocalStorage();
 };
 
 const removeField = (index: number) => {
-  if (fields.length > 1) {
-    fields.splice(index, 1);
-    saveFieldsToLocalStorage();
+  if (fields.length <= 1) {
+    return;
   }
+  fields.splice(index, 1);
+  saveFieldsToLocalStorage();
 };
 
 const handleInputChange = (index: number) => {
@@ -101,18 +103,18 @@ const saveFieldsToLocalStorage = () => {
 
 const loadFieldsFromLocalStorage = () => {
   const storedFields = localStorage.getItem("fields");
-  if (storedFields) {
-    const parsedFields = JSON.parse(storedFields);
-    parsedFields.forEach((field: Field) => {
-      fields.push(field);
-    });
-    fields.forEach(updateVowelCount);
-    highlightMatchingFields();
-  } else {
+  if (!storedFields) {
     fields.push({ id: 1, value: "", vowelCount: 0, highlighted: false });
     fields.push({ id: 2, value: "", vowelCount: 0, highlighted: false });
     fields.push({ id: 3, value: "", vowelCount: 0, highlighted: false });
+    return;
   }
+  const parsedFields = JSON.parse(storedFields);
+  parsedFields.forEach((field: Field) => {
+    fields.push(field);
+  });
+  fields.forEach(updateVowelCount);
+  highlightMatchingFields();
 };
 
 onMounted(() => {
